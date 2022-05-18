@@ -1,0 +1,33 @@
+.targeting{
+    border: 1px solid rgb(183, 187, 187);
+    padding: 20px 50px;
+    margin-top: 20px;
+}
+
+.targeting__h1{
+    margin: 50px 0;
+    color: rgb(34, 180, 144);
+}
+
+.targeting__form__div__tag{
+    margin-bottom: 30px;
+   
+}
+
+.targeting__form__div__one{
+    margin-bottom: 30px;
+}
+
+.targeting__form__div__one div {
+    display: flex;
+    gap: 20px;
+}
+
+#gradYear__div{
+    display: flex;
+    gap : 20px;
+}
+
+.targeting__form__div__gradYear{
+    margin-bottom: 30px;
+}

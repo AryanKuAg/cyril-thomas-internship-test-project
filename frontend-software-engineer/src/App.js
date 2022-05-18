@@ -1,8 +1,7 @@
 import {useState} from 'react';
 import './App.css';
 import BasicDetail from './Components/BasicDetail/BasicDetail';
-import PostJob from './Components/PostJob/PostJob';
-
+import Targeting from './Components/Targeting/Targeting.js';
 function App() {
   
   return (
@@ -10,7 +9,7 @@ function App() {
       {/* Basic Details */}
       <BasicDetail />
       {/* Targeting */}
-      <PostJob/>
+      <Targeting/>
       {/* post Job */}
     </div>
   );
