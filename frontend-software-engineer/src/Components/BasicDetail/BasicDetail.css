@@ -1,0 +1,18 @@
+.basicDetail__h1{
+    margin: 50px 0;
+    color: rgb(34, 180, 144);
+}
+
+.basicDetail__form__div{
+    margin-bottom: 30px;
+}
+
+#experience__div{
+    display: flex;
+    gap : 20px;
+}
+
+.basicDetail{
+    border: 1px solid rgb(183, 187, 187);
+    padding: 20px 50px;
+}
