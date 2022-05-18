@@ -12,7 +12,7 @@ async function getMovieById(id) { // Async function to get movie by id
         let filteredData = {};
         filteredData.title = rawResponseData.title;
         filteredData.movie_release_year = rawResponseData.year;
-        filteredData.imdb_rating  = rawResponseData.rating;
+        filteredData.imdb_rating  = rawResponseData.imDbRating;
         filteredData.genre = rawResponseData.genres;
         filteredData.summary = rawResponseData.plot;
         filteredData.duration = rawResponseData.runtimeStr;
