@@ -16,11 +16,17 @@
 
 .targeting__form__div__one{
     margin-bottom: 30px;
-}
-
-.targeting__form__div__one div {
     display: flex;
     gap: 20px;
+    justify-content: stretch;
+}
+
+
+.targeting__form__div__one div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+   
 }
 
 #gradYear__div{

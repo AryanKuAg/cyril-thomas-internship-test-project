@@ -38,6 +38,7 @@ textarea {
 
 select {
     width: 100%;
+    color: rgb(44, 44, 44);
 
     padding: 12px 20px;
     margin: 8px 0;
