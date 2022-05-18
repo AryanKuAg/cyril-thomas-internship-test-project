@@ -2,7 +2,13 @@ import { useState } from "react";
 import "./BasicDetail.css";
 
 function BasicDetail(props) {
-  const [basicDetail, setBasicDetail] = useState({jobTitle:"", location:"",minExp:"",maxExp:"",des:""});
+  const [basicDetail, setBasicDetail] = useState({
+    jobTitle: "",
+    location: "",
+    minExp: "",
+    maxExp: "",
+    des: "",
+  });
 
   return (
     <div className="basicDetail">
@@ -14,7 +20,9 @@ function BasicDetail(props) {
           <br />
           <input
             value={basicDetail.jobTitle}
-            onChange={(e) => setBasicDetail((pre) => ({ ...pre, jobTitle: e.target.value }))}
+            onChange={(e) =>
+              setBasicDetail((pre) => ({ ...pre, jobTitle: e.target.value }))
+            }
             placeholder="Write a title that appropriately describes this job"
             type="text"
             name="jobTitle"
@@ -26,7 +34,9 @@ function BasicDetail(props) {
           <br />
           <input
             value={basicDetail.location}
-            onChange={(e) => setBasicDetail((pre) => ({ ...pre, location: e.target.value }))}
+            onChange={(e) =>
+              setBasicDetail((pre) => ({ ...pre, location: e.target.value }))
+            }
             placeholder="+ Add location"
             type="text"
             name="location"
@@ -37,23 +47,36 @@ function BasicDetail(props) {
           <label>Years of experience*</label>
           <br />
           <div id="experience__div">
-          <select value={basicDetail.minExp} onChange={(e) => setBasicDetail((pre) => ({ ...pre, minExp: e.target.value }))}  required>
-        <option name="0">0</option>
-        <option name="1">1</option>
-      </select>
-      <select value={basicDetail.maxExp} onChange={(e) => setBasicDetail((pre) => ({ ...pre, maxExp: e.target.value }))} required>
-        <option name="0">0</option>
-        <option name="1">1</option>
-      </select>
+            <select
+              value={basicDetail.minExp}
+              onChange={(e) =>
+                setBasicDetail((pre) => ({ ...pre, minExp: e.target.value }))
+              }
+              required
+            >
+              <option name="0">0</option>
+              <option name="1">1</option>
+            </select>
+            <select
+              value={basicDetail.maxExp}
+              onChange={(e) =>
+                setBasicDetail((pre) => ({ ...pre, maxExp: e.target.value }))
+              }
+              required
+            >
+              <option name="0">0</option>
+              <option name="1">1</option>
+            </select>
           </div>
-          
         </div>
         <div className="basicDetail__form__div">
           <label>Job Description*</label>
           <br />
           <textarea
             value={basicDetail.des}
-            onChange={(e) => setBasicDetail((pre) => ({ ...pre, des: e.target.value }))}
+            onChange={(e) =>
+              setBasicDetail((pre) => ({ ...pre, des: e.target.value }))
+            }
             placeholder="Describe the role and responsibilities, skills required for the job and help the candidates understand the role better"
             type="text"
             name="des"
