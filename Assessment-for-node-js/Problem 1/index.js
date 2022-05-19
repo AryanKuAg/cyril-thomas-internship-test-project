@@ -1,4 +1,5 @@
 var xlsx = require('node-xlsx');
+const ObjectsToCsv = require('objects-to-csv')
 
 var obj = xlsx.parse(__dirname + '/kepler_data.xlsx'); // parses a file
 
@@ -19,13 +20,22 @@ let filteredKeplerList = obj[0].data.map(e => {  // filtering the data
 // })
 
 // Filtering data based on assignment criteria 
-// let habitablePlanets = filteredKeplerList.filter(e => {
-//     let isConfirmed = e[3] === 'CONFIRMED';
-//     let isInSol = e[31] >= 0.36 && e[31] <= 1.11;
-//     let isKoiPrad = e[25] < 1.6;
-//     if(isConfirmed && isInSol && isKoiPrad){
-//         return true;
-//     }
-//     return false;
-// })
+let habitablePlanets = filteredKeplerList.filter(e => {
+    let isConfirmed = e[3] === 'CONFIRMED';
+    let isInSol = e[31] >= 0.36 && e[31] <= 1.11;
+    let isKoiPrad = e[25] < 1.6;
+    if(isConfirmed && isInSol && isKoiPrad){
+        return true;
+    }
+    return false;
+})
 
+
+const csv = new ObjectsToCsv(habitablePlanets);
+
+let createCsvFile = async function () {
+    await csv.toDisk('./csv_kepler_data.csv')
+    // console.log('jinda hai to pyala pura bhar de')
+};
+
+createCsvFile();
