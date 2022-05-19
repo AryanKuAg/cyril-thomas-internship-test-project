@@ -35,7 +35,7 @@ const csv = new ObjectsToCsv(habitablePlanets);
 
 let createCsvFile = async function () {
     await csv.toDisk('./csv_kepler_data.csv')
-    // console.log('jinda hai to pyala pura bhar de')
+    console.log(habitablePlanets)
 };
 
 createCsvFile();
