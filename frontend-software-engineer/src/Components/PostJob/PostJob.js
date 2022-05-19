@@ -8,9 +8,12 @@ function PostJob(props) {
     console.log(basicDetails, targeting);
   }
 
+  let isCompulsoryFilled = (basicDetails.jobTitle && basicDetails.location && basicDetails.minExp && basicDetails.maxExp && basicDetails.des && targeting.category && targeting.fArea) 
+
+  
   return (
     <div className="postJob">
-      <button type="button" class="btn btn-success btn-lg" onClick={postSubmit} disabled={false}>
+      <button type="button" class="btn btn-success btn-lg" onClick={postSubmit} disabled={!isCompulsoryFilled}>
         Post Job
       </button>
       <button type="button" class="btn btn-outline-success btn-lg">
