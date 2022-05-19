@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const friendSchema = mongoose.Schema({
+const friendSchema = mongoose.Schema({ // friend schema
     _id: {
         type: Number,
     },
@@ -9,7 +9,7 @@ const friendSchema = mongoose.Schema({
     }
 },{ versionKey: false, });
 
-const Friend = mongoose.model("Friend", friendSchema);
+const Friend = mongoose.model("Friend", friendSchema);  // friend model
 
 // const me = new Friend({
 //     _id: 1,
