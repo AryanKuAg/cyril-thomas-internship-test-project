@@ -8,13 +8,15 @@ import axios from "../../axios.js"
 function PostJob(props) {
   const basicDetails = props.basicDetails;
   const targeting = props.targeting;
-  const finalData =  {
+  
+  async function postSubmit() {
+    const finalData =  { // this is the final data that will be sent to the server
       Title: basicDetails.jobTitle,
-      Locations: basicDetails.location.filter((e) => e.length > 1),
-      MustHaveSkills: targeting.fArea,
-      YearsOfExperience: null,
+      Locations: basicDetails.location.map(e => e.trim()).filter((e) => e.length > 1),
+      MustHaveSkills: [targeting.fArea],
+      YearsOfExperience: `${basicDetails.minExp}+`,
       Category: [targeting.category],
-      EmploymentType: targeting.tags.filter((e) => {
+      EmploymentType: targeting.tags.map(e => e.trim()).filter((e) => {
         if (
           e === "Full Time" ||
           e === "Part Time" ||
@@ -29,7 +31,6 @@ function PostJob(props) {
       }),
     }
     
-  async function postSubmit() {
   //   const requestOptions = {
   //     method: "POST",
   //     headers: { "Content-Type": "application/json" },
@@ -42,8 +43,8 @@ function PostJob(props) {
   //    .then((data) => console.log(data))
   //     .catch((err) => console.log(err));
 
-      let result = await axios.post("/v1jobs/job", finalData);
-    console.log("result", result);
+      let result = await axios.post("/v1jobs/job", finalData);// this is the response from the server
+    console.log(JSON.stringify(result.data)); // printing the response in JSON format
   }
 
   let isCompulsoryFilled =
@@ -59,13 +60,13 @@ function PostJob(props) {
     <div className="postJob">
       <button
         type="button"
-        class="btn btn-success btn-lg"
+        className="btn btn-success btn-lg"
         onClick={postSubmit}
         disabled={!isCompulsoryFilled}
       >
         Post Job
       </button>
-      <button type="button" class="btn btn-outline-success btn-lg">
+      <button type="button" className="btn btn-outline-success btn-lg">
         Post Job and Add Another Job
       </button>
       <a href="#">cancel</a>
