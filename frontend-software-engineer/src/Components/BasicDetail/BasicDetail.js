@@ -41,7 +41,9 @@ function BasicDetail(props) {
               });
 
               // console.log('jobtitle', e.target.value.trim());
-              setBasicDetail((pre) => ({ ...pre, jobTitle: e.target.value }));
+              setBasicDetail((pre) => {
+                props.addBasicDetails(e.target.value, pre.location, pre.minExp, pre.maxExp, pre.des);
+                return ({ ...pre, jobTitle: e.target.value })});
             }}
             style={validation.jobTitle ? white : red}
             placeholder="Write a title that appropriately describes this job"
@@ -66,7 +68,9 @@ function BasicDetail(props) {
                 return { ...pre, location: false };
               });
 
-              setBasicDetail((pre) => ({ ...pre, location: e.target.value }));
+              setBasicDetail((pre) => {
+                props.addBasicDetails( pre.jobTitle,e.target.value, pre.minExp, pre.maxExp, pre.des);
+                return ({ ...pre, location: e.target.value })});
             }}
             placeholder="+ Add location (seperate with comma)"
             type="text"
@@ -94,7 +98,9 @@ function BasicDetail(props) {
                   return { ...pre, minExp: false };
                 });
 
-                setBasicDetail((pre) => ({ ...pre, minExp: e.target.value }))
+                setBasicDetail((pre) => {
+                  props.addBasicDetails( pre.jobTitle,pre.location, e.target.value, pre.maxExp, pre.des);
+                  return ({ ...pre, minExp: e.target.value })})
               }
               }
               required
@@ -134,7 +140,9 @@ function BasicDetail(props) {
                   return { ...pre, maxExp: false };
                 });
 
-                setBasicDetail((pre) => ({ ...pre, maxExp: e.target.value }))
+                setBasicDetail((pre) => {
+                  props.addBasicDetails( pre.jobTitle,pre.location, pre.minExp, e.target.value, pre.des);
+                  return ({ ...pre, maxExp: e.target.value })})
               }
               }
               required
@@ -176,7 +184,9 @@ function BasicDetail(props) {
                 return { ...pre, des: false };
               });
 
-              setBasicDetail((pre) => ({ ...pre, des: e.target.value }))
+              setBasicDetail((pre) => {
+                props.addBasicDetails( pre.jobTitle,pre.location, pre.minExp, pre.maxExp, e.target.value);
+                return ({ ...pre, des: e.target.value })})
             }
             }
             placeholder="Describe the role and responsibilities, skills required for the job and help the candidates understand the role better"

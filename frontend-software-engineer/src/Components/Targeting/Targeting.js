@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./Targeting.css";
 import validator from "validator";
 
-function Targeting() {
+function Targeting(props) {
   const [targeting, setTargeting] = useState({
     category: "",
     fArea: "",
@@ -23,7 +23,7 @@ function Targeting() {
         <div className="targeting__form__div__one">
           <div>
             <label>Category*</label>
-            
+
             <div>
               <select
                 style={validation.category ? white : red}
@@ -37,7 +37,17 @@ function Targeting() {
                     return { ...pre, category: false };
                   });
 
-                  setTargeting((pre) => ({ ...pre, category: e.target.value }));
+                  setTargeting((pre) => {
+                    props.addTargeting(
+                      e.target.value,
+                      pre.fArea,
+                      pre.minGradYr,
+                      pre.maxGradYr,
+                      pre.tags
+                    );
+
+                    return { ...pre, category: e.target.value };
+                  });
                 }}
                 required
               >
@@ -56,11 +66,11 @@ function Targeting() {
           </div>
           <div>
             <label>Functional Area*</label>
-            
+
             <select
               value={targeting.fArea}
               style={validation.fArea ? white : red}
-              onChange={(e) =>{
+              onChange={(e) => {
                 setValidation((pre) => {
                   if (e.target.value !== "Select") {
                     return { ...pre, fArea: true };
@@ -69,22 +79,30 @@ function Targeting() {
                   return { ...pre, fArea: false };
                 });
 
+                setTargeting((pre) => {
+                  props.addTargeting(
+                    pre.category,
+                    e.target.value,
+                    pre.minGradYr,
+                    pre.maxGradYr,
+                    pre.tags
+                  );
 
-                setTargeting((pre) => ({ ...pre, fArea: e.target.value }))
-              }
-              }
+                  return { ...pre, fArea: e.target.value };
+                });
+              }}
               required
             >
               <option name="">Select</option>
-                <option name="1">React JS</option>
-                <option name="2">React Native</option>
-                <option name="3">Flutter</option>
-                <option name="4">MERN Stack</option>
-                <option name="5">Blockchain</option>
-                <option name="6">Video Editor</option>
-                <option name="7">Unity</option>
-                <option name="8">Adobe Photoshop</option>
-                <option name="9">Kali Linux</option>
+              <option name="1">React JS</option>
+              <option name="2">React Native</option>
+              <option name="3">Flutter</option>
+              <option name="4">MERN Stack</option>
+              <option name="5">Blockchain</option>
+              <option name="6">Video Editor</option>
+              <option name="7">Unity</option>
+              <option name="8">Adobe Photoshop</option>
+              <option name="9">Kali Linux</option>
             </select>
           </div>
         </div>
@@ -95,7 +113,16 @@ function Targeting() {
             <select
               value={targeting.minGradYr}
               onChange={(e) =>
-                setTargeting((pre) => ({ ...pre, minGradYr: e.target.value }))
+                setTargeting((pre) => {
+                  props.addTargeting(
+                    pre.category,
+                    pre.fArea,
+                    e.target.value,
+                    pre.maxGradYr,
+                    pre.tags
+                  );
+                  return { ...pre, minGradYr: e.target.value };
+                })
               }
               required
             >
@@ -111,12 +138,20 @@ function Targeting() {
               <option name="2018">2018</option>
               <option name="2019">2019</option>
               <option name="2020">2020</option>
-        
             </select>
             <select
               value={targeting.maxGradYr}
               onChange={(e) =>
-                setTargeting((pre) => ({ ...pre, maxGradYr: e.target.value }))
+                setTargeting((pre) => {
+                  props.addTargeting(
+                    pre.category,
+                    pre.fArea,
+                    pre.minGradYr,
+                    e.target.value,
+                    pre.tags
+                  );
+                  return { ...pre, maxGradYr: e.target.value };
+                })
               }
               required
             >
@@ -132,7 +167,6 @@ function Targeting() {
               <option name="2021">2021</option>
               <option name="2022">2022</option>
               <option name="2023">2023</option>
-        
             </select>
           </div>
         </div>
@@ -141,13 +175,18 @@ function Targeting() {
           <br />
           <input
             value={targeting.tags}
-            onChange={(e) =>
-              {
-
-                setTargeting((pre) => ({ ...pre, tags: e.target.value }))
-
-              }
-            }
+            onChange={(e) => {
+              setTargeting((pre) => {
+                props.addTargeting(
+                  pre.category,
+                  pre.fArea,
+                  pre.minGradYr,
+                  pre.maxGradYr,
+                  e.target.value
+                );
+                return { ...pre, tags: e.target.value };
+              });
+            }}
             placeholder="+ Add job tag"
             type="text"
             name="tags"
