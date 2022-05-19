@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import "./Targeting.css";
-import validator from "validator";
 
 function Targeting(props) {
   const [targeting, setTargeting] = useState({
