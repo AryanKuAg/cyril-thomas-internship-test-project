@@ -99,8 +99,19 @@ function Targeting() {
               }
               required
             >
-              <option name="0">0</option>
-              <option name="1">1</option>
+              <option name="Min Batch">Min Batch</option>
+              <option name="2010">2010</option>
+              <option name="2011">2011</option>
+              <option name="2012">2012</option>
+              <option name="2013">2013</option>
+              <option name="2014">2014</option>
+              <option name="2015">2015</option>
+              <option name="2016">2016</option>
+              <option name="2017">2017</option>
+              <option name="2018">2018</option>
+              <option name="2019">2019</option>
+              <option name="2020">2020</option>
+        
             </select>
             <select
               value={targeting.maxGradYr}
@@ -109,8 +120,19 @@ function Targeting() {
               }
               required
             >
-              <option name="0">0</option>
-              <option name="1">1</option>
+              <option name="Max Batch">Max Batch</option>
+              <option name="2013">2013</option>
+              <option name="2014">2014</option>
+              <option name="2015">2015</option>
+              <option name="2016">2016</option>
+              <option name="2017">2017</option>
+              <option name="2018">2018</option>
+              <option name="2019">2019</option>
+              <option name="2020">2020</option>
+              <option name="2021">2021</option>
+              <option name="2022">2022</option>
+              <option name="2023">2023</option>
+        
             </select>
           </div>
         </div>
@@ -120,7 +142,11 @@ function Targeting() {
           <input
             value={targeting.tags}
             onChange={(e) =>
-              setTargeting((pre) => ({ ...pre, tags: e.target.value }))
+              {
+
+                setTargeting((pre) => ({ ...pre, tags: e.target.value }))
+
+              }
             }
             placeholder="+ Add job tag"
             type="text"
